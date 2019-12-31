@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script>
+        function showLog(total) {
+            for (let i = 0; i < total; i++) {
+                console.log(i);
+            }
+        }
+
+        function buttonClick() {
+            console.log("Start Log");
+            showLog(20000);
+            console.log("Finish Log");
+        }
+    </script>
+</head>
+<body>
+<button onclick="buttonClick()">Search Products</button>
+</body>
+</html>
