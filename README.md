@@ -1,6 +1,8 @@
 # Belajar JavaScript Async
 
-Ini adalah souce code dari materi youtube JavaScript Async dari channel Programmer Zaman Now
+Ini adalah souce code dari materi youtube JavaScript Async dari channel Programmer Zaman Now :
+
+https://www.youtube.com/playlist?list=PL-CtdCApEFH-I4CD6km3BcXqrhWAkY4et
 
 Anda bisa melihat slide materinya disini :
 
