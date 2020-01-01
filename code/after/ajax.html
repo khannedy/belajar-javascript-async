@@ -10,6 +10,14 @@
 
         function getProducts(keyword) {
             // Code AJAX Here!
+            const ajax = new XMLHttpRequest();
+            const url = getProductsUrl(keyword);
+            ajax.open("GET", url);
+            ajax.send();
+
+            // tidak bisa dilakukan secara sync
+            // const response = JSON.parse(ajax.responseText);
+            // console.log(response);
         }
 
         function clearProducts() {
