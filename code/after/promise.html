@@ -10,6 +10,26 @@
 
         function getProducts(keyword) {
             // Code Promise Here!
+            const promise = new Promise(function (resolve, reject) {
+                // code async
+
+                const ajax = new XMLHttpRequest();
+                ajax.onload = function () {
+                    if (ajax.status === 200) {
+                        const data = JSON.parse(ajax.responseText);
+                        resolve(data);
+                    } else {
+                        reject(Error("Gagal mengambil data produk"));
+                    }
+                };
+
+                const url = getProductsUrl(keyword);
+                ajax.open("GET", url);
+                ajax.send();
+
+            });
+
+            return promise;
         }
 
         function clearProducts() {
@@ -30,7 +50,8 @@
         }
 
         function buttonClick() {
-            getProducts(document.getElementById("keyword").value);
+            const promise = getProducts(document.getElementById("keyword").value);
+            console.log(promise);
         }
     </script>
 </head>
