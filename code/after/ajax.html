@@ -8,16 +8,15 @@
             return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`;
         }
 
-        function getProducts(keyword) {
+        function getProducts(keyword, callbackSuccess, callbackError) {
             // Code AJAX Here!
             const ajax = new XMLHttpRequest();
             ajax.onload = function () {
-                if(ajax.status === 200){
+                if (ajax.status === 200) {
                     const data = JSON.parse(ajax.responseText);
-                    clearProducts();
-                    displayProducts(data);
-                }else{
-                    getProductsError();
+                    callbackSuccess(data);
+                } else {
+                    callbackError();
                 }
             };
 
@@ -73,7 +72,26 @@
         }
 
         function buttonClick() {
-            getProducts(document.getElementById("keyword").value);
+            getProducts(document.getElementById("keyword").value, function (data) {
+                console.log(data);
+            }, function () {
+                console.log("Error");
+            });
+
+            getProducts(document.getElementById("keyword").value, function (data) {
+                clearProducts();
+                displayProducts(data)
+            }, function () {
+                getProductsError();
+            });
+
+            getProducts(document.getElementById("keyword").value, function (data) {
+                clearTableProducts();
+                displayTableProducts(data)
+            }, function () {
+                getProductsError();
+            });
+
             console.log("Success Click Button");
         }
     </script>
