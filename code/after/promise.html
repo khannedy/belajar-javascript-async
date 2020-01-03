@@ -56,10 +56,14 @@
                     return value.data.products;
                 })
                 .then(function (products) {
+                    clearProducts();
                     products.forEach(function (product) {
                         displayProduct(product);
                     })
-                });
+                })
+                .catch(function (error) {
+                    alert(error.message);
+                })
         }
     </script>
 </head>
