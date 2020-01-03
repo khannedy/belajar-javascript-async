@@ -51,7 +51,15 @@
 
         function buttonClick() {
             const promise = getProducts(document.getElementById("keyword").value);
-            console.log(promise);
+            promise
+                .then(function (value) {
+                    return value.data.products;
+                })
+                .then(function (products) {
+                    products.forEach(function (product) {
+                        displayProduct(product);
+                    })
+                });
         }
     </script>
 </head>
