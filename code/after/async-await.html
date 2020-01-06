@@ -16,7 +16,7 @@
                         const data = JSON.parse(ajax.responseText);
                         resolve(data);
                     } else {
-                        reject(Error(ajax.statusText));
+                        reject(Error("Error mengambil data produk"));
                     }
                 };
                 ajax.open("GET", getProductsUrl(keyword));
@@ -64,12 +64,18 @@
             //     })
 
             // AFTER
-            const value = await getProducts(document.getElementById("keyword").value);
-            const products = value.data.products;
-            clearProducts();
-            products.forEach(function (product) {
-                displayProduct(product);
-            })
+            try {
+                const value = await getProducts(document.getElementById("keyword").value);
+                const products = value.data.products;
+                clearProducts();
+                products.forEach(function (product) {
+                    displayProduct(product);
+                })
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                console.log("Selesai memproses Async Await");
+            }
         }
     </script>
 </head>
