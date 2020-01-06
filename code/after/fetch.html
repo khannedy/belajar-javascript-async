@@ -10,6 +10,12 @@
 
         function getProducts(keyword) {
             // Code Fetch API Here!
+            const url = getProductsUrl(keyword);
+            return fetch(url, {
+                method: "GET"
+            }).then(function (response) {
+                return response.json();
+            });
         }
 
         function clearProducts() {
@@ -30,7 +36,23 @@
         }
 
         function buttonClick() {
-            getProducts(document.getElementById("keyword").value);
+            const promise = getProducts(document.getElementById("keyword").value);
+            promise
+                .then(function (value) {
+                    return value.data.products;
+                })
+                .then(function (products) {
+                    clearProducts();
+                    products.forEach(function (product) {
+                        displayProduct(product);
+                    })
+                })
+                .catch(function (error) {
+                    alert(error.message);
+                })
+                .finally(function () {
+                    console.log("Selesai memproses Promise");
+                })
         }
     </script>
 </head>
