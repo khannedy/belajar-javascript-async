@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>AJAX</title>
     <script>
+        const worker = new Worker("web-worker.js");
+
         function showLog(total) {
             for (let i = 0; i < total; i++) {
                 console.log(i);
