@@ -5,16 +5,13 @@
     <title>AJAX</title>
     <script>
         const worker = new Worker("web-worker.js");
-
-        function showLog(total) {
-            for (let i = 0; i < total; i++) {
-                console.log(i);
-            }
-        }
+        worker.addEventListener("message", function (event) {
+            console.log(`Receive message from web worker : ${event.data}`);
+        });
 
         function buttonClick() {
             console.log("Start Log");
-            showLog(20000);
+            worker.postMessage(20000);
             console.log("Finish Log");
         }
     </script>
